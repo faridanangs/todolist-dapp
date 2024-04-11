@@ -14,13 +14,17 @@ contract TodoList {
 
     List[] internal lists;
 
-    function addTodo(string calldata _text) public {
+    function addTodo(string memory _text) public {
         lists.push(
             List({text: _text, status: Status.pending, time: block.timestamp})
         );
     }
 
-    function getList() public view returns (List[] memory) {
+    function getLists() public view returns (List[] memory) {
         return lists;
+    }
+
+    function changeStatus(uint256 _id) public {
+        lists[_id].status = Status.success;
     }
 }
